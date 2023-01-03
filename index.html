@@ -8,20 +8,24 @@
 <frameset framespacing="0" border="0" rows="0" frameborder="0">
 <frame name="main" src="http://43.139.6.253:8090/" scrolling="auto" noresize>
 </frameset>
-<script type="text/javascript">
-var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
-var browser = navigator.userAgent.toLowerCase();
-var isMobile = false;
-for (var i=0; i<mobileAgent.length; i++)
-{
-	if(browser.indexOf(mobileAgent[i])!=-1)
-	{
-		isMobile = true;
-		//alert(mobileAgent[i]);
-		location.href = 'http://www.blauervogel.email/';
-		break;
-	}
+<style type="text/css">
+/*定义竖屏 css*/
+@media screen and (orientation:portrait) {
+	.portrait { display:block; background-color:#FFCC00; }
+	.landscape { display:none; }
 }
-</script>
+/*定义横屏 css*/
+@media screen and (orientation:landscape) {
+	.portrait { display:none; }
+	.landscape { display:block; background-color:#FFCC00; }
+}
+</style>
+<div class="portrait">当前（浏览器）是竖屏</div>
+<div class="landscape">当前（浏览器）是横屏</div>
+<span id="a"></span>
+<script>
+window.onload=window.onresize=function(){
+	document.getElementById('a').innerHTML = '屏幕尺寸为：宽 '+window.screen.width+' x '+window.screen.height+'';
+}
 </html>
 
